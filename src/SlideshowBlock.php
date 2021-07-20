@@ -120,7 +120,7 @@ class SlideshowBlock
         BlockRegistrar::getInstance();
         $this->blockHandler = new DynamicBlock(
             'ghwp/slideshow',
-            __DIR__ . '../templates/slideshow.php',
+            __DIR__ . '/../templates/slideshow.php',
             self::ATTRIBUTES,
             self::REQUIRED_ATTRIBUTES,
             'template-parts/blocks/slideshow.php'
