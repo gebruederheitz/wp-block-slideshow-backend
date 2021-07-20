@@ -1,0 +1,21 @@
+{
+    "name": "gebruederheitz/wp-block-slideshow",
+    "description": "The backend helper for the slideshow block.",
+    "type": "library",
+    "license": "GPL-3.0-only",
+    "autoload": {
+        "psr-4": {
+            "Gebruederheitz\\GutenbergBlocks\\Slideshow\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andreas Maros",
+            "email": "andreas.maros@gebruederheitz.de"
+        }
+    ],
+    "require": {
+	    "php": "^7.3",
+        "gebruederheitz/wp-gutenberg-blocks": "~1.1"
+    }
+}
