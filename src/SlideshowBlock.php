@@ -119,7 +119,7 @@ class SlideshowBlock
     {
         BlockRegistrar::getInstance();
         $this->blockHandler = new DynamicBlock(
-            'ghwp/video-overlay',
+            'ghwp/slideshow',
             __DIR__ . '/../../../templates/slideshow.php',
             self::ATTRIBUTES,
             self::REQUIRED_ATTRIBUTES,
