@@ -111,6 +111,30 @@ class SlideshowBlock
             'type' => 'boolean',
             'default' => false,
         ],
+        'sliderLibrary' => [
+            'type' => 'string',
+            'default' => SlideshowLibraries::GLIDE,
+        ],
+        'sliderType' => [
+            'type' => 'string',
+            'default' => '',
+        ],
+        'linkingType' => [
+            'type' => 'string',
+            'default' => LinkingTypes::NONE,
+        ],
+        'thumbnailCount' => [
+            'type' => 'number',
+            'default' => 10,
+        ],
+        'thumbnailCountMedium' => [
+            'type' => 'number',
+            'default' => 6,
+        ],
+        'thumbnailCountSmall' => [
+            'type' => 'number',
+            'default' => 4,
+        ],
     ];
 
     protected const REQUIRED_ATTRIBUTES = [];

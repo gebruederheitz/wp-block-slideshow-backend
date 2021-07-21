@@ -1,4 +1,8 @@
 <?php
+
+    use Gebruederheitz\GutenbergBlocks\Slideshow\LinkingTypes;
+    use Gebruederheitz\GutenbergBlocks\Slideshow\SlideshowLibraries;
+
     $innerBlocks = get_query_var('innerBlocks');
 
     $autoplaySpeed = get_query_var('autoplaySpeed'); 
@@ -25,35 +29,59 @@
     $slidesToScrollSmall = get_query_var('slidesToScrollSmall'); 
     $useAutoplay = get_query_var('useAutoplay'); 
     $useAutoplayMedium = get_query_var('useAutoplayMedium'); 
-    $useAutoplaySmall = get_query_var('useAutoplaySmall'); 
+    $useAutoplaySmall = get_query_var('useAutoplaySmall');
+
+    $sliderLibrary = get_query_var('sliderLibrary');
+    $linkingType = get_query_var('linkingType');
+    $thumbnailCount = get_query_var('thumbnailCount');
+    $thumbnailCountMedium = get_query_var('thumbnailCountMedium');
+    $thumbnailCountSmall = get_query_var('thumbnailCountSmall');
+    $sliderType = get_query_var('sliderType');
 ?>
 <div
-    class="ghwp-slideshow"
+    class="ghwp-slideshow ghwp-slideshow--<?= $sliderLibrary ?>"
+    data-ghwp-slider-lib="<?= $sliderLibrary ?>"
     data-ghwp-slider-count="<?= $slidesShown ?>"
     data-ghwp-slider-count-medium="<?= $slidesShownMedium ?>"
     data-ghwp-slider-count-small="<?= $slidesShownSmall ?>"
     data-ghwp-slider-group="<?= $slidesToScroll ?>"
     data-ghwp-slider-group-medium="<?= $slidesToScrollMedium ?>"
     data-ghwp-slider-group-small="<?= $slidesToScrollSmall ?>"
-    data-ghwp-slider-autoplay="<?= $useAutoplay ?>"
-    data-ghwp-slider-autoplay-medium="<?= $useAutoplayMedium ?>"
-    data-ghwp-slider-autoplay-small="<?= $useAutoplaySmall ?>"
+    data-ghwp-slider-autoplay="<?= json_encode($useAutoplay) ?>"
+    data-ghwp-slider-autoplay-medium="<?= json_encode($useAutoplayMedium) ?>"
+    data-ghwp-slider-autoplay-small="<?= json_encode($useAutoplaySmall) ?>"
     data-ghwp-slider-speed="<?= $autoplaySpeed ?>"
-    data-ghwp-slider-infinite="<?= $infiniteLoop ?>"
-    data-ghwp-slider-infinite-medium="<?= $infiniteLoopMedium ?>"
-    data-ghwp-slider-infinite-small="<?= $infiniteLoopSmall ?>"
-    data-ghwp-slider-center="<?= $centerMode ?>"
-    data-ghwp-slider-center-medium="<?= $centerModeMedium ?>"
-    data-ghwp-slider-center-small="<?= $centerModeSmall ?>"
+    data-ghwp-slider-infinite="<?= json_encode($infiniteLoop) ?>"
+    data-ghwp-slider-infinite-medium="<?= json_encode($infiniteLoopMedium) ?>"
+    data-ghwp-slider-infinite-small="<?= json_encode($infiniteLoopSmall) ?>"
+    data-ghwp-slider-center="<?= json_encode($centerMode) ?>"
+    data-ghwp-slider-center-medium="<?= json_encode($centerModeMedium) ?>"
+    data-ghwp-slider-center-small="<?= json_encode($centerModeSmall) ?>"
     data-ghwp-slider-edges="<?= $edgePadding ?>"
     data-ghwp-slider-edges-medium="<?= $edgePaddingMedium ?>"
     data-ghwp-slider-edges-small="<?= $edgePaddingSmall ?>"
     data-ghwp-slider-breakpoint-medium="<?= $breakpointMedium ?>"
     data-ghwp-slider-breakpoint-small="<?= $breakpointSmall ?>"
     data-ghwp-slider-initial="<?= $initialSlide ?>"
-    data-ghwp-slider-dots="<?= $dots ?>"
-    data-ghwp-slider-dots-medium="<?= $dotsMedium ?>"
-    data-ghwp-slider-dots-small="<?= $dotsSmall ?>"
+    data-ghwp-slider-dots="<?= json_encode($dots) ?>"
+    data-ghwp-slider-dots-medium="<?= json_encode($dotsMedium) ?>"
+    data-ghwp-slider-dots-small="<?= json_encode($dotsSmall) ?>"
+    data-ghwp-slider-type="<?= $sliderType ?>"
 >
     <?= $innerBlocks ?>
 </div>
+<?php if ($sliderLibrary === SlideshowLibraries::SPLIDE && $linkingType !== LinkingTypes::NONE): ?>
+<div
+    class="ghwp-slideshow ghwp-slideshow--secondary"
+    data-ghwp-slider-lib="<?= $sliderLibrary ?>"
+    data-ghwp-slider-link-type="<?= $linkingType ?>"
+    data-ghwp-slider-count="<?= $thumbnailCount ?>"
+    data-ghwp-slider-count-medium="<?= $thumbnailCountMedium ?>"
+    data-ghwp-slider-count-small="<?= $thumbnailCountSmall ?>"
+    data-ghwp-slider-dots="false"
+    data-ghwp-slider-dots-medium="false"
+    data-ghwp-slider-dots-small="false"
+>
+    <?= $innerBlocks ?>
+</div>
+<?php endif; ?>
