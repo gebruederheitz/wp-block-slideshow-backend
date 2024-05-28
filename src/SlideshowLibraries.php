@@ -6,4 +6,5 @@ class SlideshowLibraries
 {
     const GLIDE = 'glide';
     const SPLIDE = 'splide';
+    const SWIPER = 'swiper';
 }

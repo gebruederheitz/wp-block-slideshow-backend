@@ -16,8 +16,12 @@
     $dotsSmall = get_query_var('dotsSmall'); 
     $edgePadding = get_query_var('edgePadding'); 
     $edgePaddingMedium = get_query_var('edgePaddingMedium'); 
-    $edgePaddingSmall = get_query_var('edgePaddingSmall'); 
-    $infiniteLoop = get_query_var('infiniteLoop'); 
+    $edgePaddingSmall = get_query_var('edgePaddingSmall');
+    $gap = get_query_var('gap');
+    $gapMedium = get_query_var('gapMedium');
+    $gapSmall = get_query_var('gapSmall');
+    $imageShowCaptions = get_query_var('imageShowCaptions');
+    $infiniteLoop = get_query_var('infiniteLoop');
     $infiniteLoopMedium = get_query_var('infiniteLoopMedium'); 
     $infiniteLoopSmall = get_query_var('infiniteLoopSmall'); 
     $initialSlide = get_query_var('initialSlide'); 
@@ -37,9 +41,22 @@
     $thumbnailCountMedium = get_query_var('thumbnailCountMedium');
     $thumbnailCountSmall = get_query_var('thumbnailCountSmall');
     $sliderType = get_query_var('sliderType');
+
+    $classNames = [
+        'ghwp-slideshow',
+        'ghwp-slideshow--'.$sliderLibrary,
+    ];
+
+    if (isset($args['className'])) {
+        $classNames[] = $args['className'];
+    }
+
+    if ($imageShowCaptions) {
+        $classNames[] = 'with-captions';
+    }
 ?>
 <div
-    class="ghwp-slideshow ghwp-slideshow--<?= $sliderLibrary ?>"
+    class="<?= implode(' ', $classNames) ?>"
     data-ghwp-slider-lib="<?= $sliderLibrary ?>"
     data-ghwp-slider-count="<?= $slidesShown ?>"
     data-ghwp-slider-count-medium="<?= $slidesShownMedium ?>"
@@ -51,6 +68,9 @@
     data-ghwp-slider-autoplay-medium="<?= json_encode($useAutoplayMedium) ?>"
     data-ghwp-slider-autoplay-small="<?= json_encode($useAutoplaySmall) ?>"
     data-ghwp-slider-speed="<?= $autoplaySpeed ?>"
+    data-ghwp-slider-gap="<?= $gap ?>"
+    data-ghwp-slider-gap-medium="<?= $gapMedium ?>"
+    data-ghwp-slider-gap-small="<?= $gapSmall ?>"
     data-ghwp-slider-infinite="<?= json_encode($infiniteLoop) ?>"
     data-ghwp-slider-infinite-medium="<?= json_encode($infiniteLoopMedium) ?>"
     data-ghwp-slider-infinite-small="<?= json_encode($infiniteLoopSmall) ?>"

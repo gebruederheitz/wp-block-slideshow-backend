@@ -59,6 +59,22 @@ class SlideshowBlock
             'type' => 'number',
             'default' => 50,
         ],
+        'gap' => [
+            'type' => 'number',
+            'default' => 0,
+        ],
+        'gapMedium' => [
+            'type' => 'number',
+            'default' => 0,
+        ],
+        'gapSmall' => [
+            'type' => 'number',
+            'default' => 0,
+        ],
+        'imageShowCaptions' => [
+            'type' => 'boolean',
+            'default' => false,
+        ],
         'infiniteLoop' => [
             'type' => 'boolean',
             'default' => false,
